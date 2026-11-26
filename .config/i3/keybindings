@@ -66,8 +66,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split orientation for the next window
-bindsym $mod+Ctrl+h split h
-bindsym $mod+v split v
+bindsym $mod+Ctrl+h split h, mark _manual
+bindsym $mod+v split v, mark _manual
 
 # fullscreen, layouts, floating
 bindsym $mod+f fullscreen toggle
@@ -79,7 +79,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # small window: turn the focused window into a small centred floating one
-bindsym $mod+m floating enable, resize set 960 600, move position center
+bindsym $mod+m floating enable, resize set 50 ppt 50 ppt, move position center
 
 # scratchpad: hide / show a window
 bindsym $mod+Shift+minus move scratchpad

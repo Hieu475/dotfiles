@@ -31,7 +31,6 @@ bar {
         mode hide
         hidden_state hide
         modifier $mod
-        modifier $mod
 
         position top
         height 24
