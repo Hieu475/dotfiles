@@ -66,8 +66,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split orientation for the next window
-bindsym $mod+Ctrl+h split h
-bindsym $mod+v split v
+bindsym $mod+Ctrl+h split h, mark _manual
+bindsym $mod+v split v, mark _manual
 
 # fullscreen, layouts, floating
 bindsym $mod+f fullscreen toggle

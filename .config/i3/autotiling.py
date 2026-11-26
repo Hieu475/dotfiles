@@ -21,6 +21,8 @@ HISTORY_FILE = os.environ.get("I3_FOCUS_HISTORY") or os.path.join(
     os.environ.get("XDG_RUNTIME_DIR", "/tmp"), "i3-focus-history.json"
 )
 MAX_HISTORY = 40
+# set by the manual split keys (Super+v, Super+Ctrl+h)
+MANUAL_MARK = "_manual"
 history = []
 
 
@@ -41,6 +43,21 @@ def on_focus(i3, event):
     history.insert(0, cid)
     del history[MAX_HISTORY:]
     save_history()
+    adjust(i3)
+
+
+def on_new(i3, event):
+    """A window that opens inside the manually split container uses up the manual choice."""
+    try:
+        # i3 reports 'focus' before 'new', so the new window may already be wrapped in a
+        # container of its own: look anywhere below the marked window's parent.
+        for marked in i3.get_tree().find_marked(f"^{MANUAL_MARK}$"):
+            new_id = event.container.id
+            if marked.id != new_id and marked.parent is not None:
+                if any(c.id == new_id for c in marked.parent.descendants()):
+                    i3.command(f"unmark {MANUAL_MARK}")
+    except Exception:
+        pass
     adjust(i3)
 
 
@@ -68,6 +85,8 @@ def adjust(i3, _event=None):
         return
     try:
         con = i3.get_tree().find_focused()
+        if con is not None and MANUAL_MARK in con.marks:
+            return  # the user chose the split direction for this window; keep it
         if con is None or con.floating in ("auto_on", "user_on"):
             return
         if con.fullscreen_mode:
@@ -88,7 +107,7 @@ def main():
     i3 = i3ipc.Connection()
     i3.on("window::focus", on_focus)
     i3.on("window::close", on_close)
-    i3.on("window::new", adjust)
+    i3.on("window::new", on_new)
     i3.on("window::move", adjust)
     i3.main()
 

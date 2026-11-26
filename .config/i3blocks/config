@@ -9,32 +9,33 @@ interval=30
 
 [ime]
 command=$HOME/.config/i3blocks/scripts/ime.sh
-interval=10
+interval=15
+signal=12
 
 [wifi]
 command=$HOME/.config/i3blocks/scripts/wifi.sh
-interval=10
+interval=30
 
 [cpu]
 command=$HOME/.config/i3blocks/scripts/cpu.sh
-interval=3
+interval=5
 
 [mem]
 command=$HOME/.config/i3blocks/scripts/mem.sh
-interval=5
+interval=10
 
 [volume]
 command=$HOME/.config/i3blocks/scripts/volume.sh
-interval=10
+interval=20
 signal=11
 
 [battery]
 command=$HOME/.config/i3blocks/scripts/battery.sh
-interval=20
+interval=30
 
 [clock]
 command=$HOME/.config/i3blocks/scripts/clock.sh
-interval=5
+interval=30
 
 [power]
 command=$HOME/.config/i3blocks/scripts/power.sh

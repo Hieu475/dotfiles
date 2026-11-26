@@ -17,8 +17,7 @@ exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agen
 # auto split direction (dwindle-style tiling); restarted on every reload
 exec_always --no-startup-id ~/.config/i3/start-autotiling.sh
 
-# tray utilities (shown in the bar): volume (click = mixer, scroll = volume) and battery/power
-exec --no-startup-id pasystray
+# battery, lid and power-button handling (volume and battery are shown by the i3blocks bar)
 exec --no-startup-id xfce4-power-manager
 
 # wifi tray applet

@@ -11,3 +11,6 @@ if [ "$(ibus engine 2>/dev/null)" = "Bamboo" ]; then
 else
     ibus engine Bamboo
 fi
+
+# refresh the VI/EN item on the bar right away
+pkill -RTMIN+12 -x i3blocks 2>/dev/null || true
