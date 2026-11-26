@@ -1,0 +1,83 @@
+/* Minimal black / grey launcher */
+
+configuration {
+    modi: "drun,window";
+    show-icons: false;
+    drun-display-format: "{name}";
+    display-drun: "›";
+    font: "JetBrainsMono Nerd Font 10";
+}
+
+* {
+    bg:         #000000;
+    bg-alt:     #111111;
+    fg:         #c8c8c8;
+    fg-dim:     #6b6b6b;
+    line:       #2a2a2a;
+
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+window {
+    width: 460px;
+    background-color: @bg;
+    border: 1px;
+    border-color: @line;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    spacing: 10px;
+}
+
+inputbar {
+    children: [ prompt, entry ];
+    spacing: 8px;
+    padding: 8px 10px;
+    background-color: @bg-alt;
+    border-radius: 6px;
+}
+
+prompt {
+    text-color: @fg-dim;
+}
+
+entry {
+    placeholder: "search";
+    placeholder-color: @fg-dim;
+}
+
+listview {
+    lines: 8;
+    columns: 1;
+    scrollbar: false;
+    spacing: 2px;
+}
+
+element {
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element selected.normal {
+    background-color: #ffffff;
+    text-color: #000000;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+}

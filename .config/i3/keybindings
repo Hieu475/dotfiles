@@ -1,0 +1,158 @@
+# Keybindings. $mod is Super (the Windows key), set in the main config.
+
+# Super+drag moves floating windows, Super+right-drag resizes them
+floating_modifier $mod
+# drag tiling windows by their title bar
+tiling_drag modifier titlebar
+
+# ---- programs -------------------------------------------------------------
+bindsym $mod+Return exec ghostty
+bindsym $mod+b exec brave-browser --new-window
+bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+Shift+f exec thunar
+
+# jump to any open window by name (rofi window switcher) and power menu
+bindsym $mod+Shift+Tab exec --no-startup-id rofi -show window
+bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/powermenu.sh
+
+# keyboard cheatsheet (searchable, in rofi); the text lives in cheatsheet.txt
+bindsym $mod+slash exec --no-startup-id ~/.config/i3/show-cheatsheet.sh
+
+# screenshot (Flameshot) and clipboard history (CopyQ)
+bindsym Print exec --no-startup-id flameshot gui
+bindsym $mod+Shift+s exec --no-startup-id flameshot gui
+bindsym $mod+Shift+v exec --no-startup-id copyq toggle
+
+# dropdown terminal: shows/hides a small centred Ghostty (started on first use)
+bindsym $mod+grave exec --no-startup-id ~/.config/i3/toggle-dropdown.sh
+
+# toggle English <-> Vietnamese (Bamboo)
+bindsym $mod+Escape exec --no-startup-id ~/.config/i3/toggle-ime.sh
+
+# ---- smart window / tab management ------------------------------------------
+# Alt+Tab: jump back to the previous window (toggles between the last two, any workspace)
+bindsym Mod1+Tab exec --no-startup-id ~/.config/i3/focus-last.py
+# Super+Shift+b: pin the top bar on / back to auto-hide
+bindsym $mod+Shift+b bar mode toggle
+# Super+t: put every window of this workspace into one row of tabs, press again to tile them
+bindsym $mod+t exec --no-startup-id ~/.config/i3/tab-toggle.py
+# Super + mouse wheel: previous / next workspace on this screen
+bindsym --whole-window $mod+button4 workspace prev_on_output
+bindsym --whole-window $mod+button5 workspace next_on_output
+
+# ---- windows --------------------------------------------------------------
+bindsym $mod+Shift+q kill
+# Super+Ctrl+Shift+q: force-close the focused window when a normal close does nothing
+bindsym $mod+Ctrl+Shift+q exec --no-startup-id ~/.config/i3/force-close.py
+
+# focus (vim keys, or arrows)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move the focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split orientation for the next window
+bindsym $mod+Ctrl+h split h
+bindsym $mod+v split v
+
+# fullscreen, layouts, floating
+bindsym $mod+f fullscreen toggle
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+# small window: turn the focused window into a small centred floating one
+bindsym $mod+m floating enable, resize set 960 600, move position center
+
+# scratchpad: hide / show a window
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# ---- workspaces and monitors ----------------------------------------------
+bindsym $mod+Tab workspace back_and_forth
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# external monitor: Super+Shift+m flips it left <-> right (and remembers that for this monitor),
+# Super+Ctrl+m re-detects the monitors and re-applies the saved layout
+bindsym $mod+Shift+m exec --no-startup-id ~/.config/i3/flip-monitor.sh
+bindsym $mod+Ctrl+m exec --no-startup-id ~/.config/i3/monitor-setup.sh
+
+# move focus / the focused workspace between monitors
+bindsym $mod+Ctrl+Left focus output left
+bindsym $mod+Ctrl+Right focus output right
+bindsym $mod+Ctrl+Shift+Left move workspace to output left
+bindsym $mod+Ctrl+Shift+Right move workspace to output right
+
+# ---- session --------------------------------------------------------------
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# lock screen (black) and notifications
+bindsym $mod+Shift+x exec --no-startup-id ~/.config/i3/lock.sh
+bindsym $mod+n exec --no-startup-id ~/.config/i3/notify-dnd.sh
+
+# ---- hardware keys --------------------------------------------------------
+set $refresh_i3status pkill -RTMIN+11 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+# ---- resize mode (Super+r, then h/j/k/l or arrows; Enter/Esc to leave) ----
+mode "resize" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"

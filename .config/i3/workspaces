@@ -1,0 +1,28 @@
+# Workspaces: names and which monitor each one lives on.
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Workspaces 1-5 live on the primary screen (the laptop), 6-10 on any other screen,
+# whatever port it is plugged into (HDMI, DP, USB-C). With no external screen, 6-10 use the laptop.
+workspace $ws1 output primary
+workspace $ws2 output primary
+workspace $ws3 output primary
+workspace $ws4 output primary
+workspace $ws5 output primary
+workspace $ws6 output nonprimary primary
+workspace $ws7 output nonprimary primary
+workspace $ws8 output nonprimary primary
+workspace $ws9 output nonprimary primary
+workspace $ws10 output nonprimary primary
+
+# Pressing the current workspace's number again jumps back to the previous one
+workspace_auto_back_and_forth yes

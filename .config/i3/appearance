@@ -1,0 +1,57 @@
+# Look: font, borders, gaps, colours and the status bar. Black / white / grey only.
+
+font pango:JetBrainsMono Nerd Font 9
+
+# slim title bars (show what each window is, drag them with the mouse); no border when a workspace has one window
+default_border normal 1
+default_floating_border normal 1
+hide_edge_borders smart
+focus_follows_mouse no
+
+# spacing between windows (none when a workspace has a single window)
+gaps inner 6
+gaps outer 0
+smart_gaps on
+
+# keep popups (e.g. file dialogs) visible over a fullscreen window of the same app
+popup_during_fullscreen smart
+
+# window border colours
+#                       border   bg       text     indicator child_border
+client.focused          #d0d0d0  #000000  #ffffff  #d0d0d0   #d0d0d0
+client.focused_inactive #2a2a2a  #000000  #b0b0b0  #2a2a2a   #2a2a2a
+client.unfocused        #1c1c1c  #000000  #666666  #1c1c1c   #1c1c1c
+client.urgent           #ffffff  #444444  #ffffff  #ffffff   #ffffff
+
+bar {
+        # i3blocks: clickable items (see ~/.config/i3blocks); i3status is no longer used
+        status_command i3blocks -c ~/.config/i3blocks/config
+        # auto-hide: the bar is hidden; hold Super to show it (also pops up by itself when a window
+        # asks for attention). Super+Shift+b pins it on/off. i3bar cannot reveal on mouse hover.
+        mode hide
+        hidden_state hide
+        modifier $mod
+        modifier $mod
+
+        position top
+        height 24
+        font pango:JetBrainsMono Nerd Font 9
+        separator_symbol "   "
+        workspace_min_width 40
+        strip_workspace_numbers no
+        tray_output primary
+        tray_padding 4
+
+        colors {
+                background #000000
+                statusline #ffffff
+                separator  #777777
+
+                #                  border   background text
+                focused_workspace  #ffffff  #ffffff    #000000
+                active_workspace   #444444  #444444    #ffffff
+                inactive_workspace #000000  #000000    #c0c0c0
+                urgent_workspace   #ffffff  #555555    #ffffff
+                binding_mode       #ffffff  #555555    #ffffff
+        }
+}

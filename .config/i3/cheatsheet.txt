@@ -1,0 +1,76 @@
+=== MỞ ỨNG DỤNG ===
+Super + Enter               Ghostty (terminal)
+Super + b                   Brave
+Super + d                   Rofi: gõ tên để mở app
+Super + Shift + f           Thunar (quản lý file)
+Super + `                   Terminal thả xuống (hiện/ẩn)
+Print / Super + Shift + s   Chụp màn hình (Flameshot)
+Super + Shift + v           Lịch sử clipboard (CopyQ)
+Alt + Tab                   Quay lại cửa sổ vừa dùng (bấm lại để qua lại)
+Super + Shift + Tab         Nhảy tới cửa sổ bất kỳ theo tên (rofi)
+Super + Shift + p           Menu nguồn: khóa / đăng xuất / ngủ / khởi động lại / tắt máy
+Super + Esc                 Đổi gõ Việt <-> Anh
+Super + /                   Mở bảng phím tắt này
+
+=== CHỌN & DI CHUYỂN CỬA SỔ ===
+Super + h / j / k / l       Chọn cửa sổ trái / dưới / trên / phải
+Super + mũi tên             Giống trên
+Super + Shift + h/j/k/l     Di chuyển cửa sổ (hoặc Shift + mũi tên)
+Super + a                   Chọn khối cha
+Super + Space               Chọn giữa cửa sổ xếp ô và cửa sổ nổi
+Super + Shift + q           Đóng cửa sổ
+Super + Ctrl + Shift + q    Đóng CƯỠNG BỨC cửa sổ đang chọn (khi đóng thường không được)
+
+=== BỐ CỤC ===
+(Tự động)                   Autotiling tự chọn chia ngang/dọc theo hình dạng cửa sổ
+Super + Ctrl + h            Ép cửa sổ kế tiếp chia NGANG (cạnh nhau)
+Super + v                   Ép cửa sổ kế tiếp chia DỌC (trên dưới)
+Super + f                   Toàn màn hình
+Super + s                   Xếp chồng (stacking)
+Super + w                   Dạng tab
+Super + Shift + b           Ghim thanh bar luôn hiện / trả về tự ẩn (giữ Super để hiện tạm)
+Super + t                   Gom MỌI cửa sổ của workspace thành một hàng tab; bấm lại để xếp ô
+Super + e                   Chia đôi (mặc định)
+Super + Shift + Space       Chuyển cửa sổ giữa xếp ô <-> nổi
+Super + m                   Cửa sổ nhỏ nổi ở giữa (960x600)
+Super + -                   Hiện/ẩn cửa sổ trong scratchpad
+Super + Shift + -           Cất cửa sổ vào scratchpad
+
+=== WORKSPACE & MÀN HÌNH ===
+Super + 1..9, 0             Đến workspace 1-10 (1-5 laptop, 6-10 màn hình ngoài)
+Super + Shift + 1..9, 0     Chuyển cửa sổ sang workspace đó
+Super + Tab                 Quay lại workspace trước
+Super + Shift + m           Lật màn hình ngoài trái <-> phải (nhớ riêng cho từng màn hình)
+Super + Ctrl + m            Nhận lại màn hình và áp dụng bố cục đã lưu
+Super + Ctrl + trái/phải    Chuyển con trỏ sang màn hình trái/phải
+Super + Ctrl + Shift + trái/phải   Đẩy cả workspace sang màn hình kia
+
+=== CHỈNH KÍCH THƯỚC (Super + r rồi bấm) ===
+h / mũi tên trái            Hẹp bớt chiều rộng
+l / mũi tên phải            Rộng thêm
+j / mũi tên xuống           Cao thêm
+k / mũi tên lên             Thấp bớt
+Enter / Esc / Super + r     Thoát chế độ resize
+
+=== HỆ THỐNG ===
+Super + Shift + c           Nạp lại config
+Super + Shift + r           Khởi động lại i3 (giữ nguyên cửa sổ)
+Super + Shift + e           Thoát i3 (có hỏi xác nhận)
+Super + Shift + x           Khóa màn hình
+Super + n                   Bật/tắt chế độ Không làm phiền (thông báo)
+
+=== THANH BAR (giữ Super để hiện, hoặc Super + Shift + b để ghim) ===
+Nút thông báo               Bấm: bật/tắt Không làm phiền
+VI / EN                     Bấm: đổi gõ Việt <-> Anh
+Wi-Fi                       Bấm: cài đặt mạng | Bấm phải: bật/tắt wifi
+CPU / RAM                   Bấm: mở btop
+Âm lượng                    Bấm: tắt tiếng | Bấm phải: mixer | Lăn: +/- 5%
+Pin                         Bấm: cài đặt nguồn
+Ngày / Giờ                  Bấm: lịch
+Nút nguồn (trắng)           Bấm: menu nguồn | Bấm phải: khóa màn hình
+
+=== CHUỘT ===
+Super + kéo chuột trái      Di chuyển cửa sổ nổi
+Super + kéo chuột phải      Đổi kích thước cửa sổ nổi
+Super + lăn chuột           Workspace trước / sau
+Kéo thanh tiêu đề           Di chuyển cửa sổ (có thể thả sang ô khác)

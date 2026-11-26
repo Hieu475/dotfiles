@@ -1,0 +1,3 @@
+# Read by the X session at login (also for i3).
+# Dark theme for Qt apps (CopyQ, Flameshot...) via qt5ct; configured in ~/.config/qt5ct/qt5ct.conf
+export QT_QPA_PLATFORMTHEME=qt5ct
