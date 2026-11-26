@@ -7,7 +7,7 @@ for_window [class="Arandr"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
 
 # btop opened from the bar (CPU / RAM click): small floating window, centred
-for_window [class="dev.btop"] floating enable, resize set 1100 650, move position center
+for_window [class="dev.btop"] floating enable, resize set 60 ppt 60 ppt, move position center
 
 # calendar popup from the bar clock
 for_window [class="(?i)zenity"] floating enable
@@ -17,4 +17,4 @@ for_window [class="(?i)flameshot"] floating enable, border pixel 0
 for_window [class="(?i)copyq"] floating enable
 
 # dropdown terminal (see toggle-dropdown.sh): float, size, centre, park in the scratchpad
-for_window [class="dev.dropdown"] floating enable, resize set 1000 600, move position center, move scratchpad, scratchpad show
+for_window [class="dev.dropdown"] floating enable, resize set 55 ppt 55 ppt, move position center, move scratchpad, scratchpad show

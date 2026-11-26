@@ -79,7 +79,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # small window: turn the focused window into a small centred floating one
-bindsym $mod+m floating enable, resize set 960 600, move position center
+bindsym $mod+m floating enable, resize set 50 ppt 50 ppt, move position center
 
 # scratchpad: hide / show a window
 bindsym $mod+Shift+minus move scratchpad

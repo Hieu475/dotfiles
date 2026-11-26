@@ -46,6 +46,59 @@ def on_focus(i3, event):
     adjust(i3)
 
 
+# (window id, workspace name, parent container id) at the time of the manual choice
+manual_state = None
+
+
+def check_manual(i3, tree=None, fresh=False):
+    """Drop the manual-split mark once it can no longer apply.
+
+    The choice means "the next window opens next to THIS window, split like this".
+    It is stale when the marked window moved to another container or workspace
+    (including the scratchpad), became floating, or sits in a tabbed/stacked
+    container. fresh=True (the user just pressed a split key) records a new state.
+    """
+    global manual_state
+    try:
+        tree = tree or i3.get_tree()
+        marked = tree.find_marked(f"^{MANUAL_MARK}$")
+        if not marked:
+            manual_state = None
+            return
+        con = marked[0]
+        ws = con.workspace()
+        context = (con.id, ws.name if ws else None, con.parent.id if con.parent else None)
+        unusable = (
+            con.floating in ("auto_on", "user_on")
+            or con.parent is None
+            or con.parent.layout in ("tabbed", "stacked")
+            or (ws is not None and ws.name == "__i3_scratch")
+        )
+        moved = (
+            not fresh
+            and manual_state is not None
+            and manual_state[0] == con.id
+            and manual_state != context
+        )
+        if unusable or moved:
+            i3.command(f"unmark {MANUAL_MARK}")
+            manual_state = None
+        elif fresh or manual_state is None or manual_state[0] != con.id:
+            manual_state = context
+    except Exception:
+        pass
+
+
+def on_mark(i3, _event=None):
+    check_manual(i3, fresh=True)
+
+
+def on_change(i3, _event=None):
+    """A window moved or changed floating state."""
+    check_manual(i3)
+    adjust(i3)
+
+
 def on_new(i3, event):
     """A window that opens inside the manually split container uses up the manual choice."""
     try:
@@ -83,6 +136,7 @@ def paused():
 def adjust(i3, _event=None):
     if paused():
         return
+    check_manual(i3)
     try:
         con = i3.get_tree().find_focused()
         if con is not None and MANUAL_MARK in con.marks:
@@ -108,7 +162,9 @@ def main():
     i3.on("window::focus", on_focus)
     i3.on("window::close", on_close)
     i3.on("window::new", on_new)
-    i3.on("window::move", adjust)
+    i3.on("window::move", on_change)
+    i3.on("window::floating", on_change)
+    i3.on("window::mark", on_mark)
     i3.main()
 
 

@@ -32,7 +32,7 @@ Super + Shift + b           Ghim thanh bar luôn hiện / trả về tự ẩn (
 Super + t                   Gom MỌI cửa sổ của workspace thành một hàng tab; bấm lại để xếp ô
 Super + e                   Chia đôi (mặc định)
 Super + Shift + Space       Chuyển cửa sổ giữa xếp ô <-> nổi
-Super + m                   Cửa sổ nhỏ nổi ở giữa (960x600)
+Super + m                   Cửa sổ nhỏ nổi ở giữa (nửa màn hình hiện tại)
 Super + -                   Hiện/ẩn cửa sổ trong scratchpad
 Super + Shift + -           Cất cửa sổ vào scratchpad
 

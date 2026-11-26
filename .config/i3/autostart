@@ -1,6 +1,8 @@
 # Programs started with i3. exec_always lines re-run on every reload, exec lines only at login.
 
-# XDG autostart entries (needed for things like dunst, polkit agents)
+# XDG autostart entries. Through these, dex also starts: nm-applet (wifi tray), picom (compositor,
+# vsync) and xfce4-power-manager. Do not add 'exec' lines for them here, they would start twice.
+# See what dex starts:  dex --autostart --environment i3 --dry-run
 exec --no-startup-id dex --autostart --environment i3
 
 # lock (black) before suspend and when the X screensaver fires
@@ -18,10 +20,7 @@ exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agen
 exec_always --no-startup-id ~/.config/i3/start-autotiling.sh
 
 # battery, lid and power-button handling (volume and battery are shown by the i3blocks bar)
-exec --no-startup-id xfce4-power-manager
 
-# wifi tray applet
-exec --no-startup-id nm-applet
 
 # solid black background
 exec_always --no-startup-id xsetroot -solid "#000000"
@@ -33,8 +32,6 @@ exec_always --no-startup-id ~/.config/i3/input-setup.sh
 # Vietnamese input: GNOME started ibus for you, i3 does not
 exec --no-startup-id ibus-daemon -drx
 
-# compositor (vsync fixes tearing on the hybrid Intel/NVIDIA laptop)
-exec --no-startup-id picom
 
 # clipboard history (Flameshot is not started here: `flameshot gui` launches it on demand)
 exec --no-startup-id copyq

@@ -39,12 +39,35 @@ Ngoài ra cần: Ghostty, Brave, font **JetBrainsMono Nerd Font**.
 ./check.sh
 ```
 
-Kiểm tra cú pháp config i3 (`i3 -C`) trên chính các file trong repo, cùng cú pháp các script shell và Python.
+Kiểm tra cú pháp i3, shell, Python; mọi script được config gọi tới phải tồn tại và chạy được;
+cảnh báo nếu thiếu chương trình. Không kiểm tra được: lệnh viết sau `bindsym` và hành vi khi i3 đang chạy.
+
+## Đo hiệu năng
+
+Chạy trong phiên i3, mở cùng một bộ ứng dụng mỗi lần so sánh:
+
+```sh
+./bench.py 60 > truoc.txt   # đổi config, đăng nhập lại
+./bench.py 60 > sau.txt
+```
+
+## Chương trình tự chạy
+
+`dex` đọc `/etc/xdg/autostart` và tự khởi động `nm-applet`, `picom`, `xfce4-power-manager`,
+nên `autostart` của i3 không gọi lại chúng. `pasystray` (nếu đã cài) bị ẩn bằng
+`.config/autostart/pasystray.desktop` vì bar đã có mục âm lượng. Xem danh sách:
+
+```sh
+dex --autostart --environment i3 --dry-run
+```
+
+`exec_always` chạy khi khởi động và khi *restart* i3 (`Super + Shift + r`), không chạy khi *reload*.
 
 ## Autotiling và chia thủ công
 
-`Super + v` (chia dọc) và `Super + Ctrl + h` (chia ngang) được giữ nguyên cho cửa sổ đó cho tới khi
-cửa sổ tiếp theo mở ra cạnh nó; sau đó autotiling tự chạy lại.
+`Super + v` (chia dọc) và `Super + Ctrl + h` (chia ngang) được giữ cho cửa sổ đó tới khi cửa sổ
+tiếp theo mở ra cạnh nó. Lựa chọn bị hủy nếu cửa sổ đó được chuyển sang khung hoặc workspace khác,
+vào scratchpad, chuyển thành nổi hoặc nằm trong khung tab.
 
 ## CopyQ
 
